@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	id="WebApp_ID" version="6.0">
+	<display-name>Spring_Day03_MVC</display-name>
+
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param> <!-- init이라는 것을 실행할 때 기본적으로 아래 있는 것을 넣고 실행 시켜라. -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/servlet-context.xml</param-value>
+		</init-param>
+
+		<!-- 해당 서브릿은 웹 어플리케이션 실행 시점에 즉시 초기화되고 로드가 된다. -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- servlet-context 설정 -->
+	<servlet-mapping>
+	
+		<!-- 모든 요청은 springDispatcherServlet으로 가야돼 -->
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+		
+	</servlet-mapping>
+	
+	<!-- root-context 설정 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/root-context.xml</param-value>
+	</context-param>
+	
+	
+</web-app>

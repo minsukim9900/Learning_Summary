@@ -32,7 +32,7 @@ public class UserController {
 		// tmp : 정상 로그인 -> User 정보 / 비정상 로그인 -> null
 		
 		if(tmp == null) {
-			return "redireect:login"; //로그인 화면으로 보내잉!
+			return "redirect:login"; //로그인 화면으로 보내잉!
 		}
 		// 아래의 코드가 실행된다는 것은 로그인이 제대로 OK라는 뜻
 		session.setAttribute("loginUser", tmp.getName());
@@ -49,6 +49,18 @@ public class UserController {
 	
 	
 	//회원가입
+	@GetMapping("/signup")
+	public String signupForm() {
+		
+		return "/user/signupform";
+	}
+	
+	@PostMapping("/signup")
+	public String signup(@ModelAttribute User user) {
+		userService.signup(user);
+		return "redirect:list";
+	}
+	
 	
 	
 	@GetMapping("/users")

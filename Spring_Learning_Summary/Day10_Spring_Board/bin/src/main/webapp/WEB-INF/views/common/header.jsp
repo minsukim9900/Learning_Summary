@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "jakarta.tags.core" %>
-<div class = "d-flex justify-content-end">
+<div>
 	<c:if test = "${empty loginUser}">
 		<a href ="login" class ="btn btn-outline-warning">로그인</a>
 		<a href ="signup" class = "btn btn-outline-primary">회원가입</a>
